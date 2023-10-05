@@ -40,6 +40,26 @@ class Core:
           print('Ingresa una cadena valida')
       if (choice==4 or choice==5):
         break
+    self.finalMenu()
+  
+  def finalMenu(self):
+    print('Has finalizado el juego. ¿Deseas volver a jugar?')
+    print('Ingresa:')
+    print('Volver a jugar')
+    print('Finalizar juego')
+
+    while True:
+      choice = validate(input())
+      match choice:
+        case 6:
+          self.start()
+        case 7:
+          print('Adios')
+        case _:
+          print('Ingresa una cadena valida')
+      if (choice==6 or choice==7):
+        break
+    
   
   def start(self):
     self.mainMenu()
