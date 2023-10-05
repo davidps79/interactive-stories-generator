@@ -1,4 +1,4 @@
 /venv
-pyenv.cfg
+pyvenv.cfg
 /__pycache__
 *.pyc
