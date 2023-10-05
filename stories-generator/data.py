@@ -191,3 +191,5 @@ attacks = [
   'No vale la pena hablar contigo',
   'Te falla, no?'
 ]
+
+descriptions = []
