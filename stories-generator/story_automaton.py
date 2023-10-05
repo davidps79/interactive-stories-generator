@@ -58,7 +58,7 @@ class StoryAutomaton:
         final_states={q31,q32,q33,q34,q35,q36,q37,q38,q39,q40,q42,q43,q46,q47}
         )
 
-        dfa.add_transitions([
+        self.dfa.add_transitions([
 
         (q0,"1",q1),
         (q0,"2",q2),
