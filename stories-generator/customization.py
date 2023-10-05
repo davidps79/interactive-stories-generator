@@ -11,8 +11,8 @@ def customizeName(fragment,input_name,output_name):
 
   return result
 
-def changeAll(o, n):
+def changeAll(input_name, output_name):
   for i in story.keys():
     c = story[i]
-    newTuple = (customizeName(c[0], o, n), [customizeName(s, o, n) for s in c[1]])
+    newTuple = (customizeName(c[0], input_name, output_name), [customizeName(s, input_name, output_name) for s in c[1]])
     story[i] = newTuple
