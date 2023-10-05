@@ -54,22 +54,25 @@ cfg1 = CFG.from_text("""
 S -> A | B | E I | E | I
 E -> a f
 A -> a b
-B -> A f
-I -> i i
+B -> A f
+I -> i i
 """)
 
-l = []
-for i in list(cfg1.get_words(max_length = 4)):
-  l.append(''.join([x.to_text() for x in i]))
+def generateDialog():
+  l = []
+  for i in list(cfg1.get_words(max_length = 4)):
+    l.append(''.join([x.to_text() for x in i]))
 
-preDialog = random.choice(l)
-for i in preDialog:
-  match i:
-    case 'a':
-      print(random.choice(comments))
-    case 'b':
-      print(random.choice(answers))
-    case 'f':
-      print(random.choice(silence))
-    case 'i':
-      print(random.choice(insults))
+  preDialog = random.choice(l)
+  result=""
+  for i in preDialog:
+    match i:
+      case 'a':
+        result+= random.choice(comments) +"\n"
+      case 'b':
+        result+= random.choice(answers) +"\n"
+      case 'f':
+        result+= random.choice(silence) +"\n"
+      case 'i':
+        result+= random.choice(insults) +"\n"
+  return result
