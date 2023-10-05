@@ -1,53 +1,47 @@
 import re
-from data import story, dialogs, descriptions
+from data import descriptions
 from story_automaton import dfa
+import interactions
 
-func = dfa._transition_function
+class Core:
+  def __init__(self, story, dialogs, descriptions):
+    func = dfa._transition_function
+    self.story = story
+    self.dialogs = dialogs
+    self.descriptions = descriptions
+  
+  def storyPoint(self, point):
+    if point!='q0':
+      print()
 
-def decide(point, exclude):
-  print('Es momento de decidir...')
-  print('1.', story[point][1][0])
-  print('2.', story[point][1][1])
-  if (3 not in exclude):
-    print('3. Descipción detallada')
-  if (4 not in exclude):
-    print('4. Hablar con un personaje')
+    print(self.story[point][0])
 
-  choice = input()
+    if (point in dfa._final_states):
+      return
+    else:
+      self.decide(point, [])
 
-  match choice:
-    case '1':
-      storyPoint(func(point, '1')[0].value)
-    case '2':
-      storyPoint(func(point, '2')[0].value)
-    case '3':
-      if 3 not in exclude:
-        if point in descriptions:
-          print(descriptions[point])
+  def decide(self, point, exclude):
+    choice = input()
+    match choice:
+      case '1':
+        self.storyPoint(self.func(point, '1')[0].value)
+      case '2':
+        self.storyPoint(self.func(point, '2')[0].value)
+      case '3':
+        if 3 not in exclude:
+          if point in descriptions:
+            print(descriptions[point])
+          else:
+            print('No encuentras pistas en este momento')
+          self.decide(point, exclude.append(3))
         else:
-          print('No encuentras pistas en este momento')
-        decide(point, exclude.append(3))
-      else:
-        decide(point, exclude)
-    case '4':
-      if 4 not in exclude:
-        if point in dialogs:
-          print(dialogs[point])
+          self.decide(point, exclude)
+      case '4':
+        if 4 not in exclude:
+          print(interactions.generateDialog())
+          self.decide(point, exclude.append(4))
         else:
-          print('Nadie está de humor para hablar ahora mismo')
-        decide(point, exclude.append(4))
-      else:
-        decide(point, exclude)
-    case _:
-      decide(point, exclude)
-
-def storyPoint(point):
-  if point!='q0':
-    print()
-
-  print(story[point][0])
-
-  if (point in dfa._final_states):
-    return
-  else:
-    decide(point, [])
+          self.decide(point, exclude)
+      case _:
+        self.decide(point, exclude)
