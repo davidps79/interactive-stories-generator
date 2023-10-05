@@ -1,7 +1,9 @@
-from core import storyPoint
+from core import Core
+from data import story, dialogs, descriptions
 
 def main():
-    print("Hello World!")
+    core = Core(story, dialogs, descriptions)
+    core.start()
 
 if __name__ == "__main__":
-    storyPoint('q0')
+    main()
