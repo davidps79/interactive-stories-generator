@@ -13,33 +13,41 @@ def decide(point, exclude):
   if (4 not in exclude):
     print('4. Hablar con un personaje')
 
-  choice = input()
+  
+  
+  while True:
+    choice = input()
+    choice = inputVerification(choice)
+    match choice:
+      case 2:
+        storyPoint(func(point, '1')[0].value)
+      case 3:
+        storyPoint(func(point, '2')[0].value)
+      case '8':
+        if 3 not in exclude:
+          if point in descriptions:
+            print(descriptions[point])
+          else:
+            print('No encuentras pistas en este momento')
+          decide(point, exclude.append(3))
+        else:
+          decide(point, exclude)
+      case '1':
+        if 4 not in exclude:
+          if point in dialogs:
+            print(dialogs[point])
+          else:
+            print('Nadie está de humor para hablar ahora mismo')
+          decide(point, exclude.append(4))
+        else:
+          decide(point, exclude)
+      case _:
+        print("Ingresa un cadena valida")
+    
+    if (choice==2 or choice == 3 or choice==8 or choice==1):
+      break
 
-  match choice:
-    case '1':
-      storyPoint(func(point, '1')[0].value)
-    case '2':
-      storyPoint(func(point, '2')[0].value)
-    case '3':
-      if 3 not in exclude:
-        if point in descriptions:
-          print(descriptions[point])
-        else:
-          print('No encuentras pistas en este momento')
-        decide(point, exclude.append(3))
-      else:
-        decide(point, exclude)
-    case '4':
-      if 4 not in exclude:
-        if point in dialogs:
-          print(dialogs[point])
-        else:
-          print('Nadie está de humor para hablar ahora mismo')
-        decide(point, exclude.append(4))
-      else:
-        decide(point, exclude)
-    case _:
-      decide(point, exclude)
+  
 
 def storyPoint(point):
   if point!='q0':
