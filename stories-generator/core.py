@@ -1,4 +1,3 @@
-import re
 from data import descriptions
 from story_automaton import dfa
 from validations import validate
@@ -23,9 +22,18 @@ class Core:
       self.decide(point, [])
 
   def decide(self, point, exclude):
+    print('Es momento de decidir...')
+    print('1.', self.story[point][1][0])
+    print('2.', self.story[point][1][1])
+    if (3 not in exclude):
+      print('3. Descipción detallada')
+    if (4 not in exclude):
+      print('4. Hablar con un personaje')
+
     while True:
       choice = input()
       choice = validate(choice)
+      
       match choice:
         case 2:
           self.storyPoint(self.func(point, '1')[0].value)
