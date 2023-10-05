@@ -6,7 +6,7 @@ class Interactions:
   def __init__(self):
     self.comments = comments
     self.answers = answers
-    self.attack = attacks
+    self.attacks = attacks
     self.silence = silence
 
     self.cfg = CFG.from_text("""
@@ -33,5 +33,5 @@ class Interactions:
         case 'f':
           result+= random.choice(self.silence) +"\n"
         case 'i':
-          result+= random.choice(self.insults) +"\n"
+          result+= random.choice(self.attacks) +"\n"
     return result
