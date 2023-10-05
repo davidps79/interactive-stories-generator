@@ -1,6 +1,6 @@
 # interactive-stories-generator
 
-#Iniciando el proyecto
+## Iniciando el proyecto
 
 
 1.   Despues de clonar el proyecto sobre la carpeta principal en la CMD correr: 
