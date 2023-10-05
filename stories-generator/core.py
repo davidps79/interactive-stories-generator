@@ -1,11 +1,22 @@
 from data import descriptions
 from validations import validate
-from customization import changeAll
+import time
 
 class Core:
+  def type_effect(self, string):
+    for char in string:
+      print(char, end='', flush=True)
+      if char=='.':
+        time.sleep(0.3)
+      if char==',' or char==';':
+        time.sleep(0.15)
+      else:
+        time.sleep(0.03)
+    print('')
 
-  def __init__(self, story, descriptions, automaton, interactions):
+  def __init__(self, story, descriptions, automaton, interactions, customization):
     self.interactions = interactions
+    self.customization = customization
     self.final_states = automaton.dfa._final_states
     self.func = automaton.dfa._transition_function
     self.story = story
@@ -37,7 +48,7 @@ class Core:
     if point!='q0':
       print()
 
-    print(self.story[point][0])
+    self.type_effect(self.story[point][0])
 
     if (point in self.final_states):
       return
@@ -46,8 +57,8 @@ class Core:
 
   def decide(self, point, exclude):
     print('Es momento de decidir...')
-    print('1.', self.story[point][1][0])
-    print('2.', self.story[point][1][1])
+    self.type_effect(f'1. {self.story[point][1][0]}')
+    self.type_effect(f'2. {self.story[point][1][1]}')
     if (3 not in exclude):
       print('3. Descipción detallada')
     if (4 not in exclude):
@@ -83,11 +94,10 @@ class Core:
         break
   
   def changeNames(self):
-    nombres = ["Alex Mercer", "Los renegados","El informante","Sarah Ramirez","Los Cerebros Libres"]
     print('Menu de cambio de nombres')
     print('Nombres que puedes cambiar: ')
     counter=1
-    for i in nombres:
+    for i in self.customization.names:
       print(str(counter)+'-'+i)
       counter+=1
 
@@ -96,7 +106,7 @@ class Core:
     input_name=""
     while True:
       input_name = input()
-      for i in nombres:
+      for i in self.customization.names:
         if i == input_name:
           exist=True
           break
@@ -107,13 +117,6 @@ class Core:
     print('Ahora ingresa el nombre por el cual quieres reemplazar:')
 
     output_name=input()
-
-    changeAll(input_name,output_name)
-
+    self.customization.changeAll(input_name,output_name, self.story)
     print('Cambios efectuados con exito')
-
-    
-
-
-
-
+    self.mainMenu()
