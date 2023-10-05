@@ -1,15 +1,14 @@
 from data import descriptions
-from story_automaton import dfa
 from validations import validate
-from interactions import generateDialog
 from customization import changeAll
 
 class Core:
 
-  def __init__(self, story, dialogs, descriptions):
-    self.func = dfa._transition_function
+  def __init__(self, story, descriptions, automaton, interactions):
+    self.interactions = interactions
+    self.final_states = automaton.dfa._final_states
+    self.func = automaton.dfa._transition_function
     self.story = story
-    self.dialogs = dialogs
     self.descriptions = descriptions
 
   def mainMenu(self):
@@ -40,7 +39,7 @@ class Core:
 
     print(self.story[point][0])
 
-    if (point in dfa._final_states):
+    if (point in self.final_states):
       return
     else:
       self.decide(point, [])
@@ -67,15 +66,16 @@ class Core:
               print(descriptions[point])
             else:
               print('No encuentras pistas en este momento')
-            self.decide(point, exclude.append(3))
-          else:
-            self.decide(point, exclude)
+            exclude.append(3)
+
+          self.decide(point, exclude)
         case 1:
           if 4 not in exclude:
-            print(generateDialog());
-            self.decide(point, exclude.append(4))
+            print(self.interactions.generateDialog());
+            exclude.append(4)
           else:
             print('Nadie está de humor para hablar ahora mismo')
+          self.decide(point, exclude)
         case _:
           print("Ingresa un cadena valida")
       

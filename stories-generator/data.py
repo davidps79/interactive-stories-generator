@@ -171,6 +171,24 @@ answers = [
   "¡Sí! A veces, lo inesperado trae las mejores aventuras."
 ]
 
+descriptions = {
+  "q1": "Abrigo: Está confeccionado con un tejido especial que proporciona protección contra la lluvia ácida que caracteriza la ciudad, además de ser resistente al desgaste diario.",
+  "q2": "El edificio es una estructura imponente que se eleva sobre la ciudad, y en su interior, te encuentras con agentes de élite equipados con tecnología de vanguardia.",
+  "q4": "Se asemeja a un futurista distrito financiero, donde la arquitectura moderna y vanguardista se alza en gigantes edificios de vidrio y acero. Iluminadas por la brillante luz de neón que se filtra a través de pantallas publicitarias interactivas.",
+  "q5": "El mensaje cifrado revela un conjunto de coordenadas y una frase en clave: 'Coordenadas: 37.7749° N, 122.4194° W. El reloj marca la hora de la revelación.'",
+  "q8": "En medio de la huida, escuchas sus gritos: '¡Detente, intruso! ¡No escaparás tan fácilmente!' '¡Agárrenlo, no dejemos que se escape con nuestra información!'",
+  "q10": "Cientifico: 'Casi es imposible hablar en este lugar, pero sé que estás aquí para descubrir la verdad. La víctima y yo trabajábamos en un proyecto clasificado, algo que podría cambiar todo lo que sabemos sobre la tecnología en NeoTech. Pero la corporación tiene sus propios planes y secretos oscuros que oculta a cualquier costo.'",
+  "q12": "TechCorp: En el interior, los laboratorios de vanguardia y oficinas de diseño moderno son el epicentro de la investigación y desarrollo tecnológico de la corporación. Aquí es donde se gestan los avances que la empresa busca lograr. Estas cuentan con seguridad avanzada.",
+  "q15": "Pistas: Descubres documentos que indican transferencias de grandes sumas de dinero a cuentas vinculadas con la víctima. Estas transacciones parecen estar relacionadas con actividades criminales, pero el propósito exacto no está claro.",
+  "q17": "Respuesta detective: '¡No esta vez, Renegados! La verdad siempre encuentra la luz, y no podrán detenerme.'",
+  "q18": "Respuesta detective: '¡Prepárense para enfrentar la justicia que se les avecina! Pero díganme, ¿qué saben sobre la corrupción en la policía de NeoTech?'",
+  "q21": "'Te ayudaré a escapar. Juntos podemos revelar la verdad y luchar contra esta corrupción. Estamos en esto juntos y enfrentaremos los riesgos para exponer la verdad.'",
+  "q22": "'Agradezco tu cooperación. Tomaré esta información y la utilizaré para desentrañar los secretos de la corporación. Lamento que tengas que enfrentar esto solo, pero mi enfoque es en la búsqueda de la verdad.'",
+  "q24": "Accediste a documentos altamente confidenciales que detallan las operaciones ilegales y las conexiones con políticos, corporaciones y organizaciones clandestinas.",
+  "q27": "Senador Mark Thompson: Un influyente senador que juega un papel clave en la facción secreta dentro del gobierno y está implicado en la conspiración.\nSecretaria de Defensa Evelyn Reynolds: Una alta funcionaria del gobierno con acceso a información confidencial y poder en la facción secreta. Ha estado manipulando situaciones desde su posición.\nDirector de la Agencia de Inteligencia, Richard Harris: Encargado de la inteligencia del país, también es parte de la facción secreta y ha utilizado su posición para ocultar la verdad.",
+  "q29": "La ciudad se llena de multitudes unidas en contra del régimen corrupto. Las calles retumban con la voz del pueblo, exigiendo justicia y cambio. La situación se vuelve cada vez más tensa a medida que la confrontación directa continúa. La resistencia está comprometida a seguir luchando hasta que la figura corrupta sea derrocada y la ciudad pueda comenzar a sanar."
+}
+
 silence = [
   'No vale la pena opinar...',
   '(Guarda silencio)',
