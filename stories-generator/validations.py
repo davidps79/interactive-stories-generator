@@ -134,7 +134,7 @@ transducer.add_transitions([
 transducer.add_start_state('q0')
 transducer.add_final_state('q18')
 
-def inputVerification(input):
+def validate(input):
   try:
     result = "".join(list(transducer.translate(input))[0])
   except:
