@@ -23,16 +23,22 @@ class Core:
     self.descriptions = descriptions
 
   def mainMenu(self):
+    print(' ')
     print('Bienvenido')
+    print(' ')
     print('Ingresa una de las siguientes opciones:' )
+    print(' ')
     print('Iniciar juego')
     print('Personalizar nombre')
+    print(' ')
 
     while True:
       choice = validate(input())
       match choice:
         case 4:
+          print(' ')
           print('Iniciando nueva partida...')
+          print(' ')
           self.storyPoint('q0')
         case 5:
           self.changeNames()
@@ -43,8 +49,11 @@ class Core:
     self.finalMenu()
   
   def finalMenu(self):
+    print(' ')
     print('Has finalizado el juego. ¿Deseas volver a jugar?')
+    print(' ')
     print('Ingresa:')
+    print(' ')
     print('Volver a jugar')
     print('Finalizar juego')
 
@@ -54,8 +63,10 @@ class Core:
         case 6:
           self.start()
         case 7:
+          print(' ')
           print('Adios')
         case _:
+          print(' ')
           print('Ingresa una cadena valida')
       if (choice==6 or choice==7):
         break
@@ -83,6 +94,7 @@ class Core:
       print('3. Descipción detallada')
     if (4 not in exclude):
       print('4. Hablar con un personaje')
+    print(' ')
 
     while True:
       choice = validate(input())
@@ -94,34 +106,42 @@ class Core:
         case 8:
           if 3 not in exclude:
             if point in descriptions:
+              print(' ')
               print(descriptions[point])
             else:
+              print(' ')
               print('No encuentras pistas en este momento')
             exclude.append(3)
 
           self.decide(point, exclude)
         case 1:
           if 4 not in exclude:
+            print(' ')
             print(self.interactions.generateDialog());
             exclude.append(4)
           else:
+            print(' ')
             print('Nadie está de humor para hablar ahora mismo')
           self.decide(point, exclude)
         case _:
+          print(' ')
           print("Ingresa un cadena valida")
       
       if (choice==2 or choice == 3 or choice==8 or choice==1):
         break
   
   def changeNames(self):
+    print(' ')
     print('Menu de cambio de nombres')
     print('Nombres que puedes cambiar: ')
+    print(' ')
     counter=1
     for i in self.customization.names:
       print(str(counter)+'-'+i)
       counter+=1
-
+    print(' ')
     print('Ingresa el nombre que deseas cambiar:')
+    print(' ')
     exist=False
     input_name=""
     while True:
@@ -132,11 +152,13 @@ class Core:
           break
       if exist == True:
         break
+      print(' ')
       print('Ingresa una cadena valida')
-
+    print(' ')
     print('Ahora ingresa el nombre por el cual quieres reemplazar:')
 
     output_name=input()
     self.customization.changeAll(input_name,output_name, self.story)
+    print(' ')
     print('Cambios efectuados con exito')
     self.mainMenu()
