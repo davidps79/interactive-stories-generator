@@ -22,9 +22,14 @@ class Core:
     self.story = story
     self.descriptions = descriptions
 
+  def nameMenu(self):
+    print("Ingrese su nombre para comenzar el juego:")
+    self.name = input()
+    self.mainMenu()
+
   def mainMenu(self):
     print(' ')
-    print('Bienvenido')
+    print('Bienvenido ' + self.name)
     print(' ')
     print('Ingresa una de las siguientes opciones:' )
     print(' ')
@@ -73,7 +78,7 @@ class Core:
     
   
   def start(self):
-    self.mainMenu()
+    self.nameMenu()
   
   def storyPoint(self, point):
     if point!='q0':
@@ -91,7 +96,7 @@ class Core:
     self.type_effect(f'1. {self.story[point][1][0]}')
     self.type_effect(f'2. {self.story[point][1][1]}')
     if (3 not in exclude):
-      print('3. Descipción detallada')
+      print('3. Descipcion detallada')
     if (4 not in exclude):
       print('4. Hablar con alguien')
     print(' ')
