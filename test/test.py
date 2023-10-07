@@ -1,50 +1,58 @@
+from stories_generator.customization import customizeName
+from stories_generator.story_automaton import dfa
+
 import unittest
-import sys
- 
-# adding Folder_2/subfolder to the system path
-sys.path.insert(0, r"C:\Users\jhona\OneDrive\Documentos\Icesi\Discretas 3\interactive-stories-generator\stories-generator")
 
-from customization import *
-from story_automaton import *
-from core import *
 
-input_name = "John"
-output_name = "Doe"
 
 class TestInteractiveStory(unittest.TestCase):
 
+    def setUp(self):
+        self.input_name = "John"
+        self.output_name = "Doe"
+        self.fragment1 = "This is a test"
+
     def test_customizeName_no_match(self):
-        fragment = "This is a test"
-        result = customizeName(fragment, input_name, output_name)
-        self.assertEqual(result, fragment)
+        result = customizeName(self.fragment1, self.input_name, self.output_name)
+        self.assertEqual(result, self.fragment1)
+#####        
+    
+
+class Name_match(unittest.TestCase):
+    def setUp(self):
+        self.input_name = "John"
+        self.output_name = "Doe"
+        self.fragment2 = "Hello Doe, how are you?"
+        self.fragment3 = "John likes John and John likes pizza."
 
     def test_customizeName_match(self):
-        fragment = "Hello John, how are you?"
-
-        result = customizeName(fragment, input_name, output_name)
+        result = customizeName(self.fragment2, self.input_name, self.output_name)
 
         expected_result = "Hello Doe, how are you?"
         self.assertEqual(result, expected_result)
 
     def test_customizeName_multiple_matches(self):
-        fragment = "John likes John and John likes pizza."
-        input_name = "John"
-        output_name = "Doe"
-
-        result = customizeName(fragment, input_name, output_name)
+        result = customizeName(self.fragment3, self.input_name, self.output_name)
 
         expected_result = "Doe likes Doe and Doe likes pizza."
         self.assertEqual(result, expected_result)
-#####        
+    
+
+class Test_Accepting(unittest.TestCase):
+    def setUp(self):
+        self.accepting_strings = ["111111111", "11111112", "21111", "22111111", "12111"]
+
     def test_accepting_string(self):
-        accepting_strings = ["111111111", "11111112", "21111", "22111111", "12111"]
-        for string in accepting_strings:
+        for string in self.accepting_strings:
             with self.subTest(msg=f'Testing accepting string: {string}'):
                 self.assertTrue(dfa.accepts(string))
 
+class Test_Non(unittest.TestCase):
+    def setUp(self):
+        self.non_accepting_strings = ["123", "1111", "1222", "333", "2222"]
+
     def test_non_accepting_string(self):
-        non_accepting_strings = ["123", "1111", "1222", "333", "2222"]
-        for string in non_accepting_strings:
+        for string in self.non_accepting_strings:
             with self.subTest(msg=f'Testing non-accepting string: {string}'):
                 self.assertFalse(dfa.accepts(string))
 
