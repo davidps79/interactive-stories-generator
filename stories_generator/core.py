@@ -87,13 +87,13 @@ class Core:
       self.decide(point, [])
 
   def decide(self, point, exclude):
-    print('Es momento de decidir...')
+    print('\nEs momento de decidir...')
     self.type_effect(f'1. {self.story[point][1][0]}')
     self.type_effect(f'2. {self.story[point][1][1]}')
     if (3 not in exclude):
       print('3. Descipción detallada')
     if (4 not in exclude):
-      print('4. Hablar con un personaje')
+      print('4. Hablar con alguien')
     print(' ')
 
     while True:

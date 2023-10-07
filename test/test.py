@@ -1,19 +1,19 @@
-from stories_generator.customization import customizeName
-from stories_generator.story_automaton import dfa
+from stories_generator.customization import Customization
+from stories_generator.story_automaton import StoryAutomaton
 
 import unittest
 
 
 
 class TestInteractiveStory(unittest.TestCase):
-
     def setUp(self):
         self.input_name = "John"
         self.output_name = "Doe"
         self.fragment1 = "This is a test"
 
     def test_customizeName_no_match(self):
-        result = customizeName(self.fragment1, self.input_name, self.output_name)
+        c = Customization()
+        result = c.customizeName(self.fragment1, self.input_name, self.output_name)
         self.assertEqual(result, self.fragment1)
 #####        
     
@@ -26,13 +26,15 @@ class Name_match(unittest.TestCase):
         self.fragment3 = "John likes John and John likes pizza."
 
     def test_customizeName_match(self):
-        result = customizeName(self.fragment2, self.input_name, self.output_name)
+        c = Customization()
+        result = c.customizeName(self.fragment2, self.input_name, self.output_name)
 
         expected_result = "Hello Doe, how are you?"
         self.assertEqual(result, expected_result)
 
     def test_customizeName_multiple_matches(self):
-        result = customizeName(self.fragment3, self.input_name, self.output_name)
+        c = Customization()
+        result = c.customizeName(self.fragment3, self.input_name, self.output_name)
 
         expected_result = "Doe likes Doe and Doe likes pizza."
         self.assertEqual(result, expected_result)
@@ -43,18 +45,20 @@ class Test_Accepting(unittest.TestCase):
         self.accepting_strings = ["111111111", "11111112", "21111", "22111111", "12111"]
 
     def test_accepting_string(self):
+        s = StoryAutomaton()
         for string in self.accepting_strings:
             with self.subTest(msg=f'Testing accepting string: {string}'):
-                self.assertTrue(dfa.accepts(string))
+                self.assertTrue(s.dfa.accepts(string))
 
 class Test_Non(unittest.TestCase):
     def setUp(self):
         self.non_accepting_strings = ["123", "1111", "1222", "333", "2222"]
 
     def test_non_accepting_string(self):
+        s = StoryAutomaton()
         for string in self.non_accepting_strings:
             with self.subTest(msg=f'Testing non-accepting string: {string}'):
-                self.assertFalse(dfa.accepts(string))
+                self.assertFalse(s.dfa.accepts(string))
 
 if __name__ == '__main__':
     unittest.main()
