@@ -27,7 +27,7 @@ pip install -r requirements.txt
 
 
 ```
-python stories-generator/main.py
+python stories_generator/main.py
 ```
 
 ### Durante el juego:
