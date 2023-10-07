@@ -1,6 +1,6 @@
 # interactive-stories-generator
 
-## Iniciando el proyecto
+## Iniciando el proyecto por primera vez.
 
 
 1.   Despues de clonar el proyecto sobre la carpeta principal en la CMD correr: 
@@ -27,8 +27,10 @@ pip install -r requirements.txt
 
 
 ```
-python stories-generator/main.py
+python stories_generator/main.py
 ```
+
+Despues de estos pasos si se desea volver a jugar solo deben relizarse los pasos 2 y 4
 
 ### Durante el juego:
 
